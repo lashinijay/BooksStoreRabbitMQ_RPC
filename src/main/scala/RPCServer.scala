@@ -34,7 +34,6 @@ object RPCServer {
     channel = connection.createChannel()
     channel.queueDeclare(RPC_QUEUE_NAME, false, false, false, null)
     channel.basicQos(1)
-    // stop after one consumed message since this is example code
     val latch = new CountDownLatch(1)
     val serverCallback = new ServerCallback(channel, latch)
     val cancelCallback: CancelCallback = _ => {}
